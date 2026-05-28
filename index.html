@@ -71,6 +71,36 @@
   <main>
     <!-- Hero & About Section -->
     <section class="hero-section" id="hero">
+      
+      <!-- Subtle Floating Vector Schematic Background (inspired by abstract marble branding) -->
+      <div class="hero-schematic-bg" aria-hidden="true">
+        <svg class="schematic-lines" viewBox="0 0 1000 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Fine connecting lines matching the generated abstract design -->
+          <path d="M 50,200 L 250,200 L 350,320 L 650,320 M 250,200 L 250,450 L 150,550" stroke="rgba(182, 142, 86, 0.12)" stroke-width="1.5" stroke-dasharray="4 4" />
+          <path d="M 350,320 L 450,180 L 700,180" stroke="rgba(182, 142, 86, 0.12)" stroke-width="1.5" />
+          <path d="M 250,450 L 500,450 L 600,550" stroke="rgba(182, 142, 86, 0.08)" stroke-width="1" />
+          <path d="M 650,320 L 800,180" stroke="rgba(182, 142, 86, 0.08)" stroke-width="1" />
+        </svg>
+        
+        <!-- Floating Schematic Nodes with pulsing halos -->
+        <div class="schematic-node node-book animate-float-1">
+          <div class="node-halo"></div>
+          <i data-lucide="book-open"></i>
+        </div>
+        <div class="schematic-node node-bulb animate-float-2">
+          <div class="node-halo"></div>
+          <i data-lucide="lightbulb"></i>
+        </div>
+        <div class="schematic-node node-gears animate-float-3">
+          <div class="node-halo"></div>
+          <i data-lucide="settings"></i>
+        </div>
+        <div class="schematic-node node-arrow animate-float-4">
+          <div class="node-halo"></div>
+          <i data-lucide="trending-up"></i>
+        </div>
+      </div>
+
       <div class="container hero-grid">
         <div class="hero-content reveal">
           <p class="subtitle uppercase tracking-wide" id="hero-subtitle">
@@ -110,59 +140,52 @@
 
         <!-- Interactive Core Expertise Panel -->
         <div class="hero-visual reveal" id="about">
-          <div class="hero-media-wrapper">
-            <div class="deco-blob animate-float-slow" aria-hidden="true"></div>
-            <div class="deco-ring animate-rotate-slow" aria-hidden="true"></div>
-            <div class="editorial-image-frame">
-              <img src="assets/hero_abstract.png" alt="Ranita Mandal Professional Abstract Branding" class="hero-editorial-img">
+          <div class="skills-card">
+            <div class="card-glow"></div>
+            <div class="card-header">
+              <h2 class="card-title">Core Expertise</h2>
+              <p class="card-subtitle">Strategic capabilities honed across industries</p>
             </div>
-            <div class="skills-card">
-              <div class="card-glow"></div>
-              <div class="card-header">
-                <h2 class="card-title">Core Expertise</h2>
-                <p class="card-subtitle">Strategic capabilities honed across industries</p>
+            <div class="skills-list" id="skills">
+              <div class="skill-item">
+                <i data-lucide="award" class="skill-icon"></i>
+                <span>Instructional Design</span>
               </div>
-              <div class="skills-list" id="skills">
-                <div class="skill-item">
-                  <i data-lucide="award" class="skill-icon"></i>
-                  <span>Instructional Design</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="book-open" class="skill-icon"></i>
-                  <span>Content Development</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="trending-up" class="skill-icon"></i>
-                  <span>Digital Marketing</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="layers" class="skill-icon"></i>
-                  <span>Project Management</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="users" class="skill-icon"></i>
-                  <span>Team Leadership</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="search" class="skill-icon"></i>
-                  <span>Market Research</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="palette" class="skill-icon"></i>
-                  <span>Graphic Design</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="fingerprint" class="skill-icon"></i>
-                  <span>SEO & Branding</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="bar-chart-3" class="skill-icon"></i>
-                  <span>Sales Operations</span>
-                </div>
-                <div class="skill-item">
-                  <i data-lucide="presentation" class="skill-icon"></i>
-                  <span>Presentation Design</span>
-                </div>
+              <div class="skill-item">
+                <i data-lucide="book-open" class="skill-icon"></i>
+                <span>Content Development</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="trending-up" class="skill-icon"></i>
+                <span>Digital Marketing</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="layers" class="skill-icon"></i>
+                <span>Project Management</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="users" class="skill-icon"></i>
+                <span>Team Leadership</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="search" class="skill-icon"></i>
+                <span>Market Research</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="palette" class="skill-icon"></i>
+                <span>Graphic Design</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="fingerprint" class="skill-icon"></i>
+                <span>SEO & Branding</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="bar-chart-3" class="skill-icon"></i>
+                <span>Sales Operations</span>
+              </div>
+              <div class="skill-item">
+                <i data-lucide="presentation" class="skill-icon"></i>
+                <span>Presentation Design</span>
               </div>
             </div>
           </div>

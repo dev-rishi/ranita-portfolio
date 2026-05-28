@@ -389,6 +389,8 @@ h1, h2, h3, h4, .logo-serif {
   grid-template-cols: 1.1fr 0.9fr;
   gap: 4rem;
   align-items: center;
+  position: relative;
+  z-index: 3;
 }
 
 .hero-content {
@@ -445,90 +447,136 @@ h1, h2, h3, h4, .logo-serif {
   align-items: center;
 }
 
-/* Layered Editorial Media visual frame */
+/* ==========================================================================
+   FLOATING VECTOR SCHEMATIC BACKGROUND
+   ========================================================================== */
+
+.hero-schematic-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.schematic-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.schematic-node {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: rgba(252, 250, 247, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-gold-active);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-mid);
+  box-shadow: 0 4px 15px rgba(182, 142, 86, 0.08);
+  z-index: 2;
+}
+
+.schematic-node i {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-mid);
+}
+
+.node-halo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(182, 142, 86, 0.35);
+  border-radius: 50%;
+  animation: pulse-halo 3.5s infinite ease-out;
+}
+
+/* Individual node positions behind intro text and buttons on left */
+.node-book {
+  top: 15%;
+  left: 6%;
+}
+
+.node-bulb {
+  top: 72%;
+  left: 36%;
+}
+
+.node-gears {
+  top: 24%;
+  left: 45%;
+}
+
+.node-arrow {
+  top: 48%;
+  left: 10%;
+}
+
+/* Floating Animations for Nodes */
+.animate-float-1 { animation: float-n1 9s infinite ease-in-out; }
+.animate-float-2 { animation: float-n2 11s infinite ease-in-out 1.5s; }
+.animate-float-3 { animation: float-n3 8s infinite ease-in-out 3s; }
+.animate-float-4 { animation: float-n4 10s infinite ease-in-out 0.5s; }
+
+@keyframes pulse-halo {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes float-n1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -10px); }
+}
+
+@keyframes float-n2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-8px, -6px); }
+}
+
+@keyframes float-n3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, 6px); }
+}
+
+@keyframes float-n4 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-5px, 10px); }
+}
+
+/* Clean 2-Column Hero Right Side Visual */
 .hero-visual {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  z-index: 3;
 }
 
-.hero-media-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 0.85;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 1.5rem;
-}
-
-.deco-blob {
-  position: absolute;
-  top: -8%;
-  right: -8%;
-  width: 220px;
-  height: 220px;
-  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-  background: linear-gradient(135deg, rgba(227, 194, 148, 0.12), rgba(182, 142, 86, 0.02));
-  filter: blur(20px);
-  z-index: 1;
-}
-
-.deco-ring {
-  position: absolute;
-  bottom: -4%;
-  left: -4%;
-  width: 130px;
-  height: 130px;
-  border: 1px dashed rgba(182, 142, 86, 0.2);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.editorial-image-frame {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 82%;
-  height: 82%;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid var(--border-gold-soft);
-  box-shadow: 0 15px 45px -15px rgba(43, 38, 33, 0.1);
-  z-index: 2;
-  background-color: var(--bg-card);
-}
-
-.hero-editorial-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.94;
-  transform: scale(1.01);
-  transition: transform 0.8s var(--transition-smooth);
-  filter: contrast(1.01) brightness(0.99);
-}
-
-.hero-media-wrapper:hover .hero-editorial-img {
-  transform: scale(1.06);
-}
-
-/* Core Expertise Card - Glassmorphic floating overlay */
 .skills-card {
   position: relative;
-  width: 84%;
-  background-color: rgba(253, 253, 251, 0.85);
+  width: 100%;
+  background-color: rgba(252, 250, 247, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-gold-active);
-  border-radius: 24px;
-  padding: 1.75rem;
+  border-radius: 28px;
+  padding: 2.25rem;
   box-shadow: var(--shadow-card);
   overflow: hidden;
-  z-index: 3;
   transition: all 0.4s var(--transition-smooth);
 }
 
@@ -1330,5 +1378,17 @@ h1, h2, h3, h4, .logo-serif {
 
   .footer-meta {
     text-align: center;
+  }
+
+  .hero-schematic-bg {
+    opacity: 0.4;
+  }
+  .schematic-node {
+    width: 32px;
+    height: 32px;
+  }
+  .schematic-node i {
+    width: 12px;
+    height: 12px;
   }
 }
