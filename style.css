@@ -97,7 +97,7 @@ strong {
    BACKGROUNDS & TEXTURES
    ========================================================================== */
 
-/* Subtle dotted grid texture across the canvas */
+/* Subtle luxury gold-lined dotted grid texture across the canvas */
 .bg-pattern {
   position: fixed;
   top: 0;
@@ -105,8 +105,11 @@ strong {
   width: 100%;
   height: 100%;
   z-index: -2;
-  background-image: radial-gradient(var(--border-gold-soft) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: 
+    radial-gradient(var(--border-gold-soft) 1px, transparent 1px),
+    linear-gradient(to right, rgba(182, 142, 86, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(182, 142, 86, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px, 140px 140px, 140px 140px;
   opacity: 0.9;
   pointer-events: none;
 }
@@ -328,6 +331,59 @@ h1, h2, h3, h4, .logo-serif {
   position: relative;
 }
 
+/* Mouse tracking background spotlight */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 40%), rgba(227, 194, 148, 0.08), transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.15s ease-out;
+}
+
+/* Glowing text accent */
+.gold-accent-dot {
+  color: var(--gold-mid);
+  display: inline-block;
+  animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.7; 
+    transform: scale(1);
+    text-shadow: 0 0 0px transparent;
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.25);
+    text-shadow: 0 0 12px rgba(182, 142, 86, 0.75);
+  }
+}
+
+/* Floating animation frames */
+.animate-float-slow {
+  animation: float-deco 6s infinite ease-in-out;
+}
+
+.animate-rotate-slow {
+  animation: rotate-deco 16s infinite linear;
+}
+
+@keyframes float-deco {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+}
+
+@keyframes rotate-deco {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .hero-grid {
   display: grid;
   grid-template-cols: 1.1fr 0.9fr;
@@ -389,21 +445,97 @@ h1, h2, h3, h4, .logo-serif {
   align-items: center;
 }
 
-/* Core Expertise Card */
+/* Layered Editorial Media visual frame */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-media-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 0.85;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.5rem;
+}
+
+.deco-blob {
+  position: absolute;
+  top: -8%;
+  right: -8%;
+  width: 220px;
+  height: 220px;
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  background: linear-gradient(135deg, rgba(227, 194, 148, 0.12), rgba(182, 142, 86, 0.02));
+  filter: blur(20px);
+  z-index: 1;
+}
+
+.deco-ring {
+  position: absolute;
+  bottom: -4%;
+  left: -4%;
+  width: 130px;
+  height: 130px;
+  border: 1px dashed rgba(182, 142, 86, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.editorial-image-frame {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  height: 82%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold-soft);
+  box-shadow: 0 15px 45px -15px rgba(43, 38, 33, 0.1);
+  z-index: 2;
+  background-color: var(--bg-card);
+}
+
+.hero-editorial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.94;
+  transform: scale(1.01);
+  transition: transform 0.8s var(--transition-smooth);
+  filter: contrast(1.01) brightness(0.99);
+}
+
+.hero-media-wrapper:hover .hero-editorial-img {
+  transform: scale(1.06);
+}
+
+/* Core Expertise Card - Glassmorphic floating overlay */
 .skills-card {
   position: relative;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-gold-soft);
-  border-radius: 28px;
-  padding: 2.5rem;
+  width: 84%;
+  background-color: rgba(253, 253, 251, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-gold-active);
+  border-radius: 24px;
+  padding: 1.75rem;
   box-shadow: var(--shadow-card);
   overflow: hidden;
-  transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease;
+  z-index: 3;
+  transition: all 0.4s var(--transition-smooth);
 }
 
 .skills-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-gold-active);
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--gold-mid);
+  background-color: rgba(253, 253, 251, 0.95);
 }
 
 .card-glow {
@@ -412,33 +544,33 @@ h1, h2, h3, h4, .logo-serif {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top right, rgba(227, 194, 148, 0.1), transparent 60%);
+  background: radial-gradient(circle at top right, rgba(227, 194, 148, 0.12), transparent 60%);
   pointer-events: none;
 }
 
 .card-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   position: relative;
   z-index: 2;
 }
 
 .card-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
   color: var(--text-dark);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .card-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 400;
 }
 
 .skills-list {
   display: grid;
-  grid-template-cols: 1fr;
-  gap: 0.75rem;
+  grid-template-cols: 1fr 1fr; /* Custom 2-column grid layout */
+  gap: 0.6rem;
   position: relative;
   z-index: 2;
 }
@@ -446,12 +578,12 @@ h1, h2, h3, h4, .logo-serif {
 .skill-item {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  background-color: rgba(250, 246, 240, 0.5);
-  border: 1px solid rgba(182, 142, 86, 0.08);
-  padding: 0.85rem 1.25rem;
-  border-radius: 14px;
-  font-size: 0.85rem;
+  gap: 0.6rem;
+  background-color: rgba(250, 246, 240, 0.4);
+  border: 1px solid rgba(182, 142, 86, 0.06);
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-dark);
   transition: all 0.3s var(--transition-smooth);
@@ -460,13 +592,13 @@ h1, h2, h3, h4, .logo-serif {
 .skill-item:hover {
   background-color: #fff;
   border-color: var(--border-gold-active);
-  transform: translateX(4px);
-  box-shadow: 0 4px 15px rgba(182, 142, 86, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(182, 142, 86, 0.05);
 }
 
 .skill-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   color: var(--gold-mid);
 }
 

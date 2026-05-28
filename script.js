@@ -164,4 +164,18 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', highlightNav);
+
+  /* ==========================================================================
+     HERO MOUSE SPOTLIGHT EFFECT
+     ========================================================================== */
+  const heroSection = document.getElementById('hero');
+  if (heroSection) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      heroSection.style.setProperty('--mouse-x', `${x}px`);
+      heroSection.style.setProperty('--mouse-y', `${y}px`);
+    });
+  }
 });
